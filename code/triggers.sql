@@ -63,7 +63,7 @@ BEFORE INSERT ON discovery
 BEGIN
     SELECT CASE
         WHEN NEW.disc_refname NOT LIKE '<a refstr=%' 
-        THEN RAISE(ABORT, 'Invalid discovery reference format. Must be like: <a refstr=AUTHOR_ET_AL__YEAR href=https://ui.adsabs.harvard.edu/abs/BIBCODE/abstract target=ref>Author et al. YEAR</a>')
+        THEN RAISE(ABORT, 'Invalid discovery reference format')
     END;
 END;
 
@@ -73,6 +73,6 @@ BEFORE UPDATE ON discovery
 BEGIN
     SELECT CASE
         WHEN NEW.disc_refname NOT LIKE '<a refstr=%' 
-        THEN RAISE(ABORT, 'Invalid discovery reference format. Must be like: <a refstr=AUTHOR_ET_AL__YEAR href=https://ui.adsabs.harvard.edu/abs/BIBCODE/abstract target=ref>Author et al. YEAR</a>')
+        THEN RAISE(ABORT, 'Invalid discovery reference format')
     END;
 END;
