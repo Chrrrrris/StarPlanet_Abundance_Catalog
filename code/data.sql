@@ -40,7 +40,9 @@ JOIN
 JOIN 
     molecule m ON phm.molecule_id = m.id
 JOIN 
-    brewer_stellar_property bsp ON p.hostname = bsp.StellarID
+    host_ids hid ON hid.primary_id = p.hostname 
+JOIN 
+    brewer_stellar_property bsp ON bsp.StellarID = hid.alternate_id
 GROUP BY
     p.pl_name, p.hostname, p.mass, p.radius, bsp.Teff, bsp.log_g, bsp.Mass,
     bsp.l_Mass, bsp.u_Mass, bsp.Age, bsp.l_Age, bsp.u_Age, bsp.M_H, bsp.e_M_H;
