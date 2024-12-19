@@ -31,7 +31,7 @@ SELECT
     bsp.M_H AS Metallicity,
     bsp.e_M_H AS Metallicity_Error,
     (SELECT Name FROM abundance_surveys WHERE SurveyID = 
-        (SELECT SurveyID FROM elemental_abundances WHERE StellarID = p.hostname LIMIT 1)
+        (SELECT SurveyID FROM elemental_abundances WHERE StellarID = hid.alternate_id LIMIT 1)
     ) AS Abundance_Source
 FROM 
     planet p
